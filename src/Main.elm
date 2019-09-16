@@ -2,6 +2,7 @@ module Main exposing (..)
 
 {-
    PLEASE NOTE: I wrote this interface bit very, very quickly indeed...
+   Some notes below...
 -}
 
 import Browser
@@ -44,6 +45,15 @@ parseInput str =
         |> List.map SKU.fromChar
         |> sequence
         |> Maybe.withDefault []
+
+
+
+{-
+   There is no `sequence` in the standard library as far as I can tell.
+   There is a list extras lib that does have this I think.
+   I don't think I've done this very well, I was in a hurry, I'm
+   resisting the urge to rewrite it...
+-}
 
 
 sequence : List (Maybe a) -> Maybe (List a)

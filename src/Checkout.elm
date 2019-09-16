@@ -19,6 +19,12 @@ type alias BulkDiscount =
     }
 
 
+
+{-
+   Is `priceMap` in the right location? Not sure.
+-}
+
+
 priceMap : Dict String PriceInfo
 priceMap =
     Dict.fromList
@@ -65,17 +71,19 @@ calculateTotalPerSKU nel priceInfo =
 discountTotalCalculation : Int -> Int -> BulkDiscount -> Int
 discountTotalCalculation quantity price discountInfo =
     normalTotalCalculation (quantity // discountInfo.multiplier) discountInfo.price
-        -- discount
         + normalTotalCalculation (remainderBy discountInfo.multiplier quantity) price
-
-
-
--- left over normal
 
 
 normalTotalCalculation : Int -> Int -> Int
 normalTotalCalculation quantity price =
     quantity * price
+
+
+
+{-
+   Standard lib has no List groupBy ...what's with that?
+   There's probably a lib for that. So many libs.
+-}
 
 
 groupBy : List SKU -> Dict String (NonEmptyList SKU) -> Dict String (NonEmptyList SKU)

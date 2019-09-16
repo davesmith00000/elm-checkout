@@ -1,5 +1,9 @@
 module SKU exposing (SKU(..), asString, fromChar, fromString, isValid)
 
+{-
+   I quite like the Elm idea of breaking into a new file based on data structure.
+-}
+
 
 type SKU
     = A

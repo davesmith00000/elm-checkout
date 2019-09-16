@@ -1,5 +1,10 @@
 module NonEmptyList exposing (..)
 
+{-
+   There is a package that does this, but I felt like
+   seeing if I could put it together.
+-}
+
 
 type alias NonEmptyList a =
     ( a, List a )
@@ -23,6 +28,13 @@ fromList l =
 
         x :: xs ->
             Just (fromTuple ( x, xs ))
+
+
+
+{-
+   No infix operators! Gah!
+   Intended to implement: `(::) : a -> NonEmptyList a -> NonEmptyList a`
+-}
 
 
 prepend : a -> NonEmptyList a -> NonEmptyList a
