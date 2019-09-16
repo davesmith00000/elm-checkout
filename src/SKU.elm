@@ -1,4 +1,4 @@
-module SKU exposing (SKU(..), asString, fromString)
+module SKU exposing (SKU(..), asString, fromChar, fromString, isValid)
 
 
 type SKU
@@ -25,6 +25,21 @@ fromString str =
 
         _ ->
             Nothing
+
+
+fromChar : Char -> Maybe SKU
+fromChar c =
+    fromString <| String.fromChar c
+
+
+isValid : Char -> Bool
+isValid c =
+    case fromChar c of
+        Just _ ->
+            True
+
+        Nothing ->
+            False
 
 
 asString : SKU -> String
